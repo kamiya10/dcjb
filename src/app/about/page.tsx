@@ -30,7 +30,7 @@ const developers = [{
   links: [
     {
       label: '部落格',
-      url: 'https://www1.pu.edu.tw/~s1121170/hw3',
+      url: 'https://yincheng0106.github.io/',
     },
     {
       label: 'GitHub',
@@ -63,7 +63,7 @@ const developers = [{
   ],
 },
 {
-  name: '溫胤程',
+  name: '温胤呈',
   nickname: 'YinCheng',
   department: '資工二B',
   avatar: 'https://cdn.discordapp.com/avatars/464303066628227072/a_785230aab3e6432f623d5bda9d9e3aaf.gif?size=512',
@@ -75,6 +75,10 @@ const developers = [{
     {
       label: 'GitHub',
       url: 'https://github.com/YinCheng0106',
+    },
+    {
+      label: 'X',
+      url: 'https://x.com/Yin_Cheng0106',
     },
     {
       label: 'Discord',
