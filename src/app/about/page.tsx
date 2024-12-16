@@ -30,7 +30,7 @@ const developers = [{
   links: [
     {
       label: '部落格',
-      url: 'https://yincheng0106.github.io/',
+      url: 'https://www1.pu.edu.tw/~s1121170/hw3',
     },
     {
       label: 'GitHub',
@@ -70,7 +70,7 @@ const developers = [{
   links: [
     {
       label: '部落格',
-      url: 'https://www1.pu.edu.tw/~s1121148/hw3',
+      url: 'https://yincheng0106.github.io/',
     },
     {
       label: 'GitHub',
