@@ -1,0 +1,14 @@
+{
+  "title": "PU Hub",
+  "id": "1175270982219464735",
+  "category": "工具",
+  "avatarURL": "https://cdn.discordapp.com/avatars/1175270982219464735/a54a0a91fcf6d2fa987d730a62f0c163.jpg?size=512",
+  "inviteURL": "https://discord.com/oauth2/authorize?client_id=1175270982219464735&permissions=8&integration_type=0&scope=bot",
+  "owner": {
+    "name": "PU Hub",
+    "avatarURL": "https://cdn.discordapp.com/team-icons/1294133678523289630/c8ec13bf54ffbb7b442e493ea1a56c37.jpg"
+  },
+  "tags": ["校園", "AI"],
+  "shortDescription": "一隻結合AI的校園機器人",
+  "description": "# PU Hub Discord Bot\n\n一隻校園機器人，目前還在開發階段，目標是讓生成式 AI 與校園結合\n\n## 目前功能\n\n- `/food`學餐選擇: 不知道要吃什麼時，交給氣來來決定！(目前還在開發階段)\n\n- 問題回饋: 回報問題\n\n> - 討論串控制: 當有人發佈問題時，機器人會處理一系列的東西\n>   > 討論串鎖定： 將討論串鎖起來，保持其乾淨\n>   > `/latex`數學： 可以讓數學式子看起來更加的易讀\n\n## 預計開發計畫\n\n1. 關於靜宜大學的各種大小事\n2. 課程提問\n3. 其他"
+}
