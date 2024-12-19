@@ -22,14 +22,18 @@ export default function AppFooter() {
 
   return (
     <footer className={`
-      mt-12 flex w-full items-center justify-between border-t bg-muted/40 px-4
-      py-4 text-muted-foreground
+      mt-12 flex w-full flex-col items-center justify-between border-t
+      bg-muted/40 px-4 py-4 text-muted-foreground
       lg:px-16
-      md:px-8 md:py-8
+      md:flex-row md:px-8 md:py-8
       xl:px-32
     `}
     >
-      <div className="flex items-center gap-6">
+      <div className={`
+        flex flex-col items-center gap-6
+        md:flex-row
+      `}
+      >
         <span>狄西機霸 &copy; 2024</span>
         <div className="flex items-center gap-3">
           <Link href="/about">關於</Link>

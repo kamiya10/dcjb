@@ -3,7 +3,7 @@ import { Heading2 } from '@/components/ui/typography';
 
 const developers = [{
   name: '許育祁',
-  nickname: 'archie',
+  nickname: 'Archie',
   department: '資工二A',
   avatar: 'https://cdn.discordapp.com/avatars/873116401429250078/134640c3e602d583884bb464ff8e25d0.png?size=512',
   links: [
@@ -20,6 +20,7 @@ const developers = [{
       url: 'https://discord.com/users/873116401429250078',
     },
   ],
+  job: '前端工程師',
 },
 {
 
@@ -45,6 +46,7 @@ const developers = [{
       url: 'https://discord.com/users/437158166019702805',
     },
   ],
+  job: '前端工程師',
 },
 {
   name: '潘群方',
@@ -54,13 +56,14 @@ const developers = [{
   links: [
     {
       label: '部落格',
-      url: 'https://www1.pu.edu.tw/~s1121148/hw3',
+      url: 'https://www1.pu.edu.tw/~s1120058/hw6',
     },
     {
       label: 'Discord',
       url: 'https://discord.com/users/763690576209903627',
     },
   ],
+  job: '馬戲團小丑主演',
 },
 {
   name: '温胤呈',
@@ -85,6 +88,7 @@ const developers = [{
       url: 'https://discord.com/users/464303066628227072',
     },
   ],
+  job: '資料研究員',
 },
 ];
 

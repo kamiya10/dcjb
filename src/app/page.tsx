@@ -1,8 +1,8 @@
 'use client';
 
-import { Glow, GlowCapture } from '@codaworks/react-glow';
 import { Info, Music2, Wrench } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import BotCard from '@/components/app/bot-card';
 import { Input } from '@/components/ui/input';
@@ -11,7 +11,7 @@ import { RadioTile } from '@/components/ui/radio-tile';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useBotStore } from '@/store/bots';
 
-import type { MouseEvent } from 'react';
+import type { MouseEventHandler } from 'react';
 
 const Icons = {
   工具: <Wrench size={18} />,
@@ -41,7 +41,7 @@ export default function Home() {
     })();
   }, []);
 
-  const selectCategory = (ev: MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const selectCategory: MouseEventHandler<HTMLButtonElement> = (ev) => {
     if (category == ev.currentTarget.value) {
       setCategory('');
     }
@@ -53,90 +53,92 @@ export default function Home() {
   const filtered = botStore.bots.filter((v) => !category || v.category == category);
 
   return (
-    <GlowCapture size={256}>
-      <div className="flex flex-col items-center">
-        <main className={`
-          container flex gap-4
-          md:grid md:grid-cols-[1fr_4fr]
-        `}
-        >
-          <div className="flex flex-col gap-8 pt-4">
-            <div className="flex flex-col gap-2">
-              <div>搜尋</div>
-              <Input placeholder="關鍵字" />
-            </div>
-            <RadioGroup className="flex flex-col gap-2" value={category}>
-              <div>類別</div>
-              {botStore.bots
-                .map((v) => v.category)
-                .filter((v, i, a) => a.indexOf(v) == i)
-                .map((v) => (
-                  <RadioTile
-                    key={v}
-                    value={v}
-                    id={`category-${v}`}
-                    onClick={selectCategory}
-                    hidden
-                  >
-                    {Icons[v]}
-                    <span>{v}</span>
-                  </RadioTile>
-                ))}
-
-            </RadioGroup>
+    <div className="flex flex-col items-center">
+      <main className={`
+        container flex flex-col gap-4
+        md:grid md:grid-cols-[1fr_4fr] md:flex-row
+      `}
+      >
+        <div className="flex flex-col gap-8 pt-4">
+          <div className="flex flex-col gap-2">
+            <div>搜尋</div>
+            <Input placeholder="關鍵字" />
           </div>
-          <div className="flex flex-1 flex-col">
-            <div className="p-4">
-              {isLoading && (
-                <div className="flex flex-col gap-4">
-                  <Skeleton className="h-6 w-[12rem] rounded-full" />
-                  <div className={`
-                    flex flex-col gap-4
-                    md:grid md:grid-cols-[repeat(auto-fill,_minmax(320px,_1fr))]
-                  `}
-                  >
+          <RadioGroup className="flex flex-col gap-2" value={category}>
+            <div>類別</div>
+            {botStore.bots
+              .map((v) => v.category)
+              .filter((v, i, a) => a.indexOf(v) == i)
+              .map((v) => (
+                <RadioTile
+                  key={v}
+                  value={v}
+                  id={`category-${v}`}
+                  onClick={selectCategory}
+                  hidden
+                >
+                  {Icons[v]}
+                  <span>{v}</span>
+                </RadioTile>
+              ))}
 
-                    {Array.from(Array(6).keys()).map((i) => (
-                      <Skeleton className="h-48 w-full rounded-xl" key={`loading-${i}`} />
-                    ))}
-                  </div>
+          </RadioGroup>
+        </div>
+        <div className="flex flex-1 flex-col">
+          <div className="p-4">
+            {isLoading && (
+              <div className="flex flex-col gap-4">
+                <Skeleton className="h-6 w-[12rem] rounded-full" />
+                <div className={`
+                  flex flex-col gap-4
+                  md:grid md:grid-cols-[repeat(auto-fill,_minmax(320px,_1fr))]
+                `}
+                >
+
+                  {Array.from(Array(6).keys()).map((i) => (
+                    <Skeleton className="h-48 w-full rounded-xl" key={`loading-${i}`} />
+                  ))}
                 </div>
-              )}
-              {!isLoading && !error && (
-                <div className="flex flex-col gap-4">
-                  <div className="text-lg">
-                    共有
-                    {' '}
-                    <strong>{filtered.length}</strong>
-                    {' '}
-                    個符合條件的機器人
-                  </div>
-                  <div className={`
+              </div>
+            )}
+            {!isLoading && !error && (
+              <div className="flex flex-col gap-4">
+                <div className="text-lg">
+                  共有
+                  {' '}
+                  <strong>{filtered.length}</strong>
+                  {' '}
+                  個符合條件的機器人
+                </div>
+                <div
+                  className={`
                     flex flex-col gap-4
                     md:grid md:grid-cols-[repeat(auto-fill,_minmax(320px,_1fr))]
                   `}
-                  >
+                >
+                  <AnimatePresence mode="popLayout">
                     {
                       filtered.map((bot) => (
-                        <Glow
+                        <motion.div
                           key={bot.id}
-                          className={`
-                            peer transition-[transform]
-                            hover:scale-[1.01]
-                            peer-hover:scale-[1.01]
-                          `}
+                          layout
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          whileHover={{ scale: 1.01 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ ease: 'easeInOut', duration: 0.2 }}
                         >
                           <BotCard bot={bot} />
-                        </Glow>
+                        </motion.div>
                       ))
                     }
-                  </div>
+                  </AnimatePresence>
                 </div>
-              )}
-            </div>
+              </div>
+            )}
           </div>
-        </main>
-      </div>
-    </GlowCapture>
+        </div>
+      </main>
+    </div>
   );
 }

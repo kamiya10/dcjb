@@ -5,6 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
 import InviteButton from '@/components/app/invite-button';
 import Markdown from '@/components/render/markdown';
+import { Link } from '@/components/ui/typography';
 
 import type { DiscordBotData } from '@/app/api/_lib/apitypes';
 
@@ -101,6 +102,13 @@ export default async function Page({ params }: Props) {
               {data.tags.map((tag) => (
                 <Badge key={tag} variant="secondary">{tag}</Badge>
               ))}
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-4">
+            <div className="text-xl font-bold">連結</div>
+            <div className="flex flex-wrap items-center gap-2">
+              {data.link.map((val) => (<Link href={val}>val</Link>))}
             </div>
           </div>
 

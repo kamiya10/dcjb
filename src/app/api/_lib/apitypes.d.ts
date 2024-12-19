@@ -12,4 +12,5 @@ export interface DiscordBotData {
   tags: string[];
   shortDescription: string;
   description: string;
+  link: string[];
 }
