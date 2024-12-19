@@ -1,11 +1,14 @@
 import Image from 'next/image';
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { HHmmss, yyyyMMdd } from '@/lib/utils';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Timeline, TimelineConnector, TimelineContent, TimelineDescription, TimelineHeader, TimelineIcon, TimelineItem, TimelineTime, TimelineTitle } from '@/components/ui/timeline';
 import { Badge } from '@/components/ui/badge';
+import { Card } from '@/components/ui/card';
 import InviteButton from '@/components/app/invite-button';
-import Markdown from '@/components/render/markdown';
 import { Link } from '@/components/ui/typography';
+import Markdown from '@/components/render/markdown';
 
 import type { DiscordBotData } from '@/app/api/_lib/apitypes';
 
@@ -71,12 +74,34 @@ export default async function Page({ params }: Props) {
             </TabsList>
 
             <TabsContent value="description" asChild>
-              <div className="group/md">
+              <Card className="group/md p-6">
                 <Markdown>{data.description}</Markdown>
-              </div>
+              </Card>
             </TabsContent>
 
             <TabsContent value="announcement" asChild>
+              <Card className="p-6">
+                <Timeline>
+                  {data.announcements.map((a) => (
+                    <TimelineItem className="ml-16" key={a.time}>
+                      <TimelineConnector />
+                      <TimelineHeader>
+                        <TimelineTime className="flex flex-col items-end gap-2">
+                          <div>{yyyyMMdd(a.time)}</div>
+                          <div>{HHmmss(a.time)}</div>
+                        </TimelineTime>
+                        <TimelineIcon />
+                        <TimelineTitle>{a.title}</TimelineTitle>
+                      </TimelineHeader>
+                      <TimelineContent>
+                        <TimelineDescription className="group/md">
+                          <Markdown>{a.content}</Markdown>
+                        </TimelineDescription>
+                      </TimelineContent>
+                    </TimelineItem>
+                  ))}
+                </Timeline>
+              </Card>
             </TabsContent>
 
             <TabsContent value="comment" asChild>
@@ -108,7 +133,7 @@ export default async function Page({ params }: Props) {
           <div className="flex flex-col gap-4">
             <div className="text-xl font-bold">連結</div>
             <div className="flex flex-wrap items-center gap-2">
-              {data.link.map((val) => (<Link href={val}>val</Link>))}
+              {data.link.map((val) => (<Link href={val}>{val}</Link>))}
             </div>
           </div>
 

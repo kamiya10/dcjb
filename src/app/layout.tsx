@@ -3,6 +3,7 @@ import { SessionProvider } from 'next-auth/react';
 
 import AppFooter from '@/components/app/footer';
 import AppHeader from '@/components/app/header';
+import Snowfall from '@/components/render/snowfall';
 import { ThemeProvider } from '@/components/provider/theme-provider';
 
 import type { Metadata } from 'next';
@@ -51,6 +52,7 @@ export default function RootLayout({
                 {children}
               </div>
               <AppFooter />
+              <Snowfall />
             </div>
           </SessionProvider>
         </ThemeProvider>

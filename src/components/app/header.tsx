@@ -1,16 +1,26 @@
 'use client';
 
 import { signIn, useSession } from 'next-auth/react';
+import Image from 'next/image';
 import Link from 'next/link';
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
+import ChristmasHat from '@/assets/christmas.png';
 import { Skeleton } from '@/components/ui/skeleton';
 
 function Branding() {
   return (
-    <Link href="/">
+    <Link href="/" className="relative">
       <h1 className="text-xl font-bold">狄西機霸</h1>
+      <Image
+        src={ChristmasHat}
+        alt="聖誕帽"
+        height={32}
+        width={32}
+        className="absolute -right-4 -top-3 rotate-12"
+        draggable={false}
+      />
     </Link>
   );
 }
@@ -18,7 +28,7 @@ function Branding() {
 function LoginButton() {
   const login = () => void signIn('discord');
 
-  return <Button onClick={login}>登入</Button>;
+  return <Button variant="outline" onClick={login}>登入</Button>;
 }
 
 export default function AppHeader() {

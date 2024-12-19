@@ -1,8 +1,8 @@
 'use client';
 
+import { AnimatePresence, motion } from 'framer-motion';
 import { Info, Music2, Wrench } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
 
 import BotCard from '@/components/app/bot-card';
 import { Input } from '@/components/ui/input';
@@ -81,7 +81,6 @@ export default function Home() {
                   <span>{v}</span>
                 </RadioTile>
               ))}
-
           </RadioGroup>
         </div>
         <div className="flex flex-1 flex-col">

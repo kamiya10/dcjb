@@ -1,3 +1,9 @@
+export interface AnnouncementData {
+  time: number;
+  title: string;
+  content: string;
+}
+
 export interface DiscordBotData {
   title: string;
   id: string;
@@ -13,4 +19,5 @@ export interface DiscordBotData {
   shortDescription: string;
   description: string;
   link: string[];
+  announcements: AnnouncementData[];
 }
