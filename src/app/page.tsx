@@ -4,8 +4,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { Bot } from 'lucide-react';
 
+import { CategoryIcons, PremiumIds } from '@/lib/constants';
 import BotCard from '@/components/app/bot-card';
-import { CategoryIcons } from '@/lib/constants';
 import { Input } from '@/components/ui/input';
 import { RadioGroup } from '@/components/ui/radio-group';
 import { RadioTile } from '@/components/ui/radio-tile';
@@ -51,12 +51,17 @@ export default function Home() {
   };
 
   const filtered = botStore.bots
-    .filter((v) => !category || v.category == category)
+    .filter((v) => PremiumIds.includes(v.id) || !category || v.category == category)
     .filter((v) => {
+      if (PremiumIds.includes(v.id)) {
+        return PremiumIds.includes(v.id);
+      }
+
       const kw = keyword.toLowerCase();
       return v.title.toLowerCase().includes(kw)
         || v.id.toLowerCase().includes(kw);
-    });
+    })
+    .sort((a) => PremiumIds.includes(a.id) ? -1 : 1);
 
   return (
     <div className="flex flex-col items-center">
@@ -136,7 +141,7 @@ export default function Home() {
                           exit={{ opacity: 0 }}
                           transition={{ ease: 'easeInOut', duration: 0.2 }}
                         >
-                          <BotCard bot={bot} />
+                          <BotCard bot={bot} premium={PremiumIds.includes(bot.id)} />
                         </motion.div>
                       ))
                     }

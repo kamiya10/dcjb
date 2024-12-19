@@ -1,0 +1,19 @@
+{
+  "title": "Kami",
+  "id": "707186246207930398",
+  "category": "工具",
+  "avatarURL": "https://cdn.discordapp.com/avatars/707186246207930398/e41bd39d7bedbf19c7f501626d4f9659.png?size=2048&quality=lossless",
+  "inviteURL": "https://discord.com/oauth2/authorize?client_id=707186246207930398&permissions=836103286&scope=applications.commands%20bot",
+  "owner": {
+    "name": "Kamiya",
+    "avatarURL": "https://cdn.discordapp.com/avatars/437158166019702805/cabe35951275ba72618925fec44bffce.png"
+  },
+  "tags": ["工具", "臨時語音頻道"],
+  "shortDescription": "Chinese only bot, multi-language not supported yet. 中文機器人 一隻多功能機器人。自動語音頻道、強震即時警報...等。",
+  "description": "Chinese only bot, multi-language not supported yet. 中文機器人\n> 一隻多功能機器人。斜線指令、自動語音頻道...等\n> 目前還在開發階段，不過基本上 7/24 上線中\n## 動機\n因為我想要的功能在市面上的機器人幾乎都是付費功能  \n加上大多數機器人都是英文為主，群裡的人都文盲看不懂，中文機器人也比較少  \n所以就自己寫了一隻  \n之後沒打算開付費，當興趣寫寫罷了。\n## 作者\nKamiya#4047，普通常見的高中生\n## 功能\n這隻機器人主要是以斜線指令來做互動，如果不想要用斜線指令的話就要邀請 3 代（非公開機器人）  \n自動語音頻道 `/voice`  \n嗯，就自動語音頻道，我也不知道有什麼可以寫的ouo  \n頻道建立後創頻道的人在自己的頻道會有編輯頻道的權限  \n用來自訂義頻道的，自訂頻道有兩種方式\n\n另一種是用斜線指令  \n- `/voice 名稱`\n- `/voice 人數上限`\n- `/voice 位元率`\n\n如果要讓成員能編輯權限的話  \n像是某人很煩，想要關掉某人能進到我的頻道的權限之類的  \n請在身分組設定權限裡，把這隻機器人的管理員權限打開（Discord 限制要用到管理員權限 文件連結）\n\n邀請連結權限我沒勾管理員是因為我怕變成勸退說  \n看到就怕機器人會亂來之類的  \n### 強震即時警報\n大地震的時候會被我敲醒\n`/earthquake eew`\n### 音樂\n音樂被另外分到另一個機器人了  \n邀請連結 還在測試中，部分歌曲有動態歌詞功能\n\n還有很多其他的功能 \n都可以在斜線指令找到喔",
+  "link": [
+    "https://github.com/kamiya10/kami-bot",
+    "https://ko-fi.com/kamiya4047"
+  ],
+  "announcements": []
+}

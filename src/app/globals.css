@@ -2,48 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
-:root  {
-  --background: 9 100% 95%;
-  --foreground: 9 5% 10%;
-  --card: 9 50% 90%;
-  --card-foreground: 9 5% 15%;
-  --popover: 9 100% 95%;
-  --popover-foreground: 9 100% 10%;
-  --primary: 9 49% 49%;
+:root {
+  --background: 347 100% 95%;
+  --foreground: 347 5% 9%;
+  --card: 347 50% 90%;
+  --card-foreground: 347 5% 10%;
+  --popover: 347 100% 95%;
+  --popover-foreground: 347 100% 9%;
+  --primary: 347 69% 44%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 9 30% 70%;
+  --secondary: 347 30% 70%;
   --secondary-foreground: 0 0% 0%;
-  --muted: -29 30% 85%;
-  --muted-foreground: 9 5% 35%;
-  --accent: -29 30% 80%;
-  --accent-foreground: 9 5% 15%;
+  --muted: 309 30% 85%;
+  --muted-foreground: 347 5% 35%;
+  --accent: 309 30% 80%;
+  --accent-foreground: 347 5% 10%;
   --destructive: 0 100% 30%;
-  --destructive-foreground: 9 5% 90%;
-  --border: 9 30% 50%;
-  --input: 9 30% 21%;
-  --ring: 9 49% 49%;
+  --destructive-foreground: 347 5% 90%;
+  --border: 347 30% 50%;
+  --input: 347 30% 18%;
+  --ring: 347 69% 44%;
   --radius: 0.5rem;
 }
-.dark  {
-  --background: 9 50% 9%;
-  --foreground: 9 5% 90%;
-  --card: 9 50% 10%;
-  --card-foreground: 9 5% 90%;
-  --popover: 9 50% 5%;
-  --popover-foreground: 9 5% 90%;
-  --primary: 9 49% 49%;
+.dark {
+  --background: 347 50% 8%;
+  --foreground: 347 5% 90%;
+  --card: 347 50% 10%;
+  --card-foreground: 347 5% 90%;
+  --popover: 347 50% 5%;
+  --popover-foreground: 347 5% 90%;
+  --primary: 347 69% 44%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 9 30% 20%;
+  --secondary: 347 30% 10%;
   --secondary-foreground: 0 0% 100%;
-  --muted: -29 30% 21%;
-  --muted-foreground: 9 5% 60%;
-  --accent: -29 30% 21%;
-  --accent-foreground: 9 5% 90%;
+  --muted: 309 30% 15%;
+  --muted-foreground: 347 5% 60%;
+  --accent: 309 30% 15%;
+  --accent-foreground: 347 5% 90%;
   --destructive: 0 100% 30%;
-  --destructive-foreground: 9 5% 90%;
-  --border: 9 30% 21%;
-  --input: 9 30% 21%;
-  --ring: 9 49% 49%;
+  --destructive-foreground: 347 5% 90%;
+  --border: 347 30% 20%;
+  --input: 347 30% 18%;
+  --ring: 347 69% 44%;
   --radius: 0.5rem;
 }
 
@@ -52,7 +52,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground overflow-x-hidden;
     font-family: Arial, Helvetica, sans-serif;
   }
 }

@@ -1,4 +1,4 @@
-import { Bot } from 'lucide-react';
+import { Bot, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -11,9 +11,10 @@ import type { DiscordBotData } from '@/app/api/_lib/apitypes';
 
 type Props = Readonly<{
   bot: DiscordBotData;
+  premium?: boolean;
 }>;
 
-export default function BotCard({ bot }: Props) {
+export default function BotCard({ bot, premium = false }: Props) {
   const Icon = CategoryIcons[bot.category] ?? Bot;
 
   return (
@@ -21,10 +22,15 @@ export default function BotCard({ bot }: Props) {
       <Card
         className={`
           group flex h-full flex-col border-2
-          transition-[border_background-color_transform]
+          transition-[border_background-color_transform] data-premium
           dark:hover:bg-primary/[.16]
+          dark:data-[premium]:hover:bg-emerald-600/[.20]
+          data-[premium]:border-emerald-600 data-[premium]:bg-emerald-600/[.16]
+          data-[premium]:hover:border-emerald-600
+          data-[premium]:hover:bg-emerald-600/[.08]
           hover:border-primary hover:bg-primary/[.08]
         `}
+        data-premium={premium ? '' : null}
       >
         <CardHeader>
           <CardTitle className="flex items-center gap-4">
@@ -34,7 +40,7 @@ export default function BotCard({ bot }: Props) {
                 {bot.title.slice(0, 2)}
               </AvatarFallback>
             </Avatar>
-            <div className="flex flex-col gap-0.5">
+            <div className="flex flex-1 flex-col gap-0.5">
               <div className="text-lg font-bold">
                 {bot.title}
               </div>
@@ -47,6 +53,15 @@ export default function BotCard({ bot }: Props) {
                 {bot.category}
               </div>
             </div>
+            {premium && (
+              <Badge
+                variant="premium-outline"
+                className="flex items-center gap-1"
+              >
+                <Sparkles size={12} />
+                <span>精選</span>
+              </Badge>
+            )}
           </CardTitle>
         </CardHeader>
         <CardContent className="flex-1">
@@ -57,13 +72,20 @@ export default function BotCard({ bot }: Props) {
             {bot.tags.map((tag) => (
               <Badge
                 variant="outline"
-                className="group-hover:border-primary/60"
+                className={`
+                  group-data-[premium]:border-emerald-600/20
+                  group-data-[premium]:group-hover:border-emerald-600/60
+                  group-hover:border-primary/60
+                `}
               >
                 {tag}
               </Badge>
             ))}
           </div>
-          <Button onClick={() => window.open(bot.inviteURL, '_blank')}>
+          <Button
+            variant={premium ? 'premium' : 'default'}
+            onClick={() => window.open(bot.inviteURL, '_blank')}
+          >
             邀請
           </Button>
         </CardFooter>

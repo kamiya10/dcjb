@@ -7,7 +7,7 @@
   "inviteURL": "https://discord.com/oauth2/authorize?client_id=886482127263244318&permissions=36702464&integration_type=0&scope=bot+applications.commands",
   "owner": {
     "name": "Kamiya",
-    "avatarURL": "https://cdn.discordapp.com/avatars/437158166019702805/cabe35951275ba72618925fec44bffce.jpg"
+    "avatarURL": "https://cdn.discordapp.com/avatars/437158166019702805/cabe35951275ba72618925fec44bffce.png"
   },
   "tags": ["音樂"],
   "shortDescription": "播放各種音樂，支援 YouTube、SoundCloud 等平台",

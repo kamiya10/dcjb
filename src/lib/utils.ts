@@ -20,11 +20,11 @@ export const parseUrl = (url: string) => {
 
   if (url.includes('https://github.com')) {
     icon = SiGithub;
-    name = 'YouTube';
+    name = 'GitHub';
   }
   else if (url.includes('https://youtube.com')) {
     icon = SiYoutube;
-    name = 'GitHub';
+    name = 'YouTube';
   }
   else if (url.includes('https://x.com')) {
     icon = SiX;

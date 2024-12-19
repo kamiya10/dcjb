@@ -1,13 +1,13 @@
-import { Bot } from 'lucide-react';
+import { Bot, Sparkles } from 'lucide-react';
 import Image from 'next/image';
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { CategoryIcons, PremiumIds } from '@/lib/constants';
 import { HHmmss, parseUrl as getWebsiteFromUrl, yyyyMMdd } from '@/lib/utils';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Timeline, TimelineConnector, TimelineContent, TimelineDescription, TimelineHeader, TimelineIcon, TimelineItem, TimelineTime, TimelineTitle } from '@/components/ui/timeline';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
-import { CategoryIcons } from '@/lib/constants';
 import InviteButton from '@/components/app/invite-button';
 import { Link } from '@/components/ui/typography';
 import Markdown from '@/components/render/markdown';
@@ -56,7 +56,16 @@ export default async function Page({ params }: Props) {
             <AvatarFallback>{data.title.slice(0, 2)}</AvatarFallback>
           </Avatar>
           <div className="flex flex-col gap-2 drop-shadow">
-            <h2 className="text-2xl font-bold">{data.title}</h2>
+            <h2 className="flex items-center gap-2 text-2xl font-bold">
+              <span>{data.title}</span>
+              <Badge
+                variant={PremiumIds.includes(data.id) ? 'premium' : 'default'}
+                className="flex items-center gap-2"
+              >
+                <Sparkles size={16} />
+                <span>精選</span>
+              </Badge>
+            </h2>
             <h3 className="flex items-center gap-1 text-muted-foreground">
               <Icon size={20} />
               {data.category}
@@ -149,11 +158,12 @@ export default async function Page({ params }: Props) {
             <div className="flex flex-col gap-4">
               {data.link.map((url) => {
                 const website = getWebsiteFromUrl(url);
+
                 return (
                   <Link
                     href={url}
                     className={`
-                      flex items-center gap-2 text-muted-foreground no-underline
+                      flex items-center gap-3 text-muted-foreground no-underline
                     `}
                   >
                     <website.icon />

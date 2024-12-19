@@ -22,7 +22,7 @@ function Branding() {
         className={`
           absolute -right-4 -top-3 origin-[75%_75%] rotate-12
           transition-[transform_top]
-          group-hover:-top-2 group-hover:rotate-[24deg]
+          group-hover:-top-1.5 group-hover:rotate-[32deg]
         `}
       />
     </Link>
