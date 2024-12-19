@@ -20,7 +20,7 @@ type Props = Readonly<{
 
 export default async function Page({ params }: Props) {
   const id = (await params).id;
-  const response = await fetch(`http://localhost:3000/api/bot/${id}`);
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/bot/${id}`);
 
   if (!response.ok) {
     throw new Error(`Request failed with status ${response.status}: ${await response.text()}`);

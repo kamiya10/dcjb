@@ -71,6 +71,7 @@ export default function BotCard({ bot, premium = false }: Props) {
           <div className="flex flex-wrap items-center gap-2">
             {bot.tags.map((tag) => (
               <Badge
+                key={tag}
                 variant="outline"
                 className={`
                   group-data-[premium]:border-emerald-600/20
