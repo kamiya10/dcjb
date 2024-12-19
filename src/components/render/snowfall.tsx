@@ -9,7 +9,7 @@ export default function Snowfall() {
       speed={[0.25, 0.75]}
       wind={[-0.5, 0.5]}
       snowflakeCount={100}
-      color="#fffa"
+      color="#fff8"
     />
   );
 }
