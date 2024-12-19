@@ -58,13 +58,15 @@ export default async function Page({ params }: Props) {
           <div className="flex flex-col gap-2 drop-shadow">
             <h2 className="flex items-center gap-2 text-2xl font-bold">
               <span>{data.title}</span>
-              <Badge
-                variant={PremiumIds.includes(data.id) ? 'premium' : 'default'}
-                className="flex items-center gap-2"
-              >
-                <Sparkles size={16} />
-                <span>精選</span>
-              </Badge>
+              {PremiumIds.includes(data.id) && (
+                <Badge
+                  variant="premium"
+                  className="flex items-center gap-2"
+                >
+                  <Sparkles size={16} />
+                  <span>精選</span>
+                </Badge>
+              )}
             </h2>
             <h3 className="flex items-center gap-1 text-muted-foreground">
               <Icon size={20} />
