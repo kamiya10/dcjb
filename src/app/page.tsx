@@ -1,10 +1,11 @@
 'use client';
 
 import { AnimatePresence, motion } from 'framer-motion';
-import { Info, Music2, Wrench } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { Bot } from 'lucide-react';
 
 import BotCard from '@/components/app/bot-card';
+import { CategoryIcons } from '@/lib/constants';
 import { Input } from '@/components/ui/input';
 import { RadioGroup } from '@/components/ui/radio-group';
 import { RadioTile } from '@/components/ui/radio-tile';
@@ -12,12 +13,6 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { useBotStore } from '@/store/bots';
 
 import type { MouseEvent } from 'react';
-
-const Icons = {
-  工具: <Wrench size={18} />,
-  資訊: <Info size={18} />,
-  音樂: <Music2 size={18} />,
-} as Record<string, React.ReactNode>;
 
 export default function Home() {
   const botStore = useBotStore();
@@ -80,18 +75,22 @@ export default function Home() {
             {botStore.bots
               .map((v) => v.category)
               .filter((v, i, a) => a.indexOf(v) == i)
-              .map((v) => (
-                <RadioTile
-                  key={v}
-                  value={v}
-                  id={`category-${v}`}
-                  onClick={selectCategory}
-                  hidden
-                >
-                  {Icons[v]}
-                  <span>{v}</span>
-                </RadioTile>
-              ))}
+              .map((v) => {
+                const Icon = CategoryIcons[v] ?? Bot;
+
+                return (
+                  <RadioTile
+                    key={v}
+                    value={v}
+                    id={`category-${v}`}
+                    onClick={selectCategory}
+                    hidden
+                  >
+                    <Icon size={18} />
+                    <span>{v}</span>
+                  </RadioTile>
+                );
+              })}
           </RadioGroup>
         </div>
         <div className="flex flex-1 flex-col">

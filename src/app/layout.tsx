@@ -8,7 +8,7 @@ import { ThemeProvider } from '@/components/provider/theme-provider';
 
 import type { Metadata } from 'next';
 
-import './globals.css';
+import '@/app/globals.css';
 
 const manrope = Manrope({
   subsets: ['latin'],

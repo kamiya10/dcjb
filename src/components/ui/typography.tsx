@@ -6,8 +6,8 @@ export function Heading1({ className, ...props }: React.HTMLAttributes<HTMLHeadi
     <h1
       {...props}
       className={twMerge(`
-        mb-6 mt-16 scroll-m-20 text-4xl font-extrabold tracking-tight
-        lg:text-5xl
+        mb-4 mt-6 scroll-m-20 text-4xl font-extrabold tracking-tight
+        lg:text-4xl
       `, className)}
     />
   );

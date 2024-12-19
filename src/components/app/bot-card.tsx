@@ -1,11 +1,11 @@
-import { Glow } from '@codaworks/react-glow';
+import { Bot } from 'lucide-react';
 import Link from 'next/link';
 
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-
-import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+import { CategoryIcons } from '@/lib/constants';
 
 import type { DiscordBotData } from '@/app/api/_lib/apitypes';
 
@@ -14,6 +14,8 @@ type Props = Readonly<{
 }>;
 
 export default function BotCard({ bot }: Props) {
+  const Icon = CategoryIcons[bot.category] ?? Bot;
+
   return (
     <Link href={`/bots/${bot.id}`}>
       <Card
@@ -21,8 +23,7 @@ export default function BotCard({ bot }: Props) {
           group flex h-full flex-col border-2
           transition-[border_background-color_transform]
           dark:hover:bg-primary/[.16]
-          glow:border-primary glow:bg-primary/[.08]
-          hover:border-primary/40 hover:bg-primary/[.08]
+          hover:border-primary hover:bg-primary/[.08]
         `}
       >
         <CardHeader>
@@ -33,11 +34,16 @@ export default function BotCard({ bot }: Props) {
                 {bot.title.slice(0, 2)}
               </AvatarFallback>
             </Avatar>
-            <div className="flex flex-col">
-              <div className="text-lg">
+            <div className="flex flex-col gap-0.5">
+              <div className="text-lg font-bold">
                 {bot.title}
               </div>
-              <div className="text-sm font-normal text-muted-foreground">
+              <div className={`
+                flex items-center gap-1 text-sm font-normal
+                text-muted-foreground
+              `}
+              >
+                <Icon size={16} />
                 {bot.category}
               </div>
             </div>
@@ -49,17 +55,12 @@ export default function BotCard({ bot }: Props) {
         <CardFooter className="flex justify-between">
           <div className="flex flex-wrap items-center gap-2">
             {bot.tags.map((tag) => (
-              <Glow key={tag}>
-                <Badge
-                  variant="outline"
-                  className={`
-                    glow:border-primary glow:bg-primary/[.08]
-                    group-hover:border-muted-foreground/40
-                  `}
-                >
-                  {tag}
-                </Badge>
-              </Glow>
+              <Badge
+                variant="outline"
+                className="group-hover:border-primary/60"
+              >
+                {tag}
+              </Badge>
             ))}
           </div>
           <Button onClick={() => window.open(bot.inviteURL, '_blank')}>

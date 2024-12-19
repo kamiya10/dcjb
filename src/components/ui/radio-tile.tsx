@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Label } from './label';
-import { RadioGroupItem } from './radio-group';
+import { Label } from '@/components/ui/label';
+import { RadioGroupItem } from '@/components/ui/radio-group';
 
 export const RadioTile = React.forwardRef<
   React.ComponentRef<typeof RadioGroupItem>,
@@ -18,8 +18,7 @@ export const RadioTile = React.forwardRef<
         has-[[data-state=checked]]:bg-primary/20
         has-[[data-state=checked]]:font-bold
         has-[[data-state=checked]]:text-foreground
-        hover:border-secondary-foreground hover:bg-secondary
-        hover:text-secondary-foreground
+        hover:bg-secondary hover:text-secondary-foreground
       `}
     >
       <RadioGroupItem

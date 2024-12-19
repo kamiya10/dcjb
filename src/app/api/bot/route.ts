@@ -1,7 +1,7 @@
 import { join, resolve } from 'path';
 import { readFileSync, readdirSync } from 'fs';
 
-import type { DiscordBotData } from '../_lib/apitypes';
+import type { DiscordBotData } from '@/app/api/_lib/apitypes';
 
 let cache: DiscordBotData[] = [];
 let lastFetchTime = 0;

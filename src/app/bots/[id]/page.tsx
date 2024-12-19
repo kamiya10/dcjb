@@ -1,11 +1,13 @@
+import { Bot } from 'lucide-react';
 import Image from 'next/image';
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { HHmmss, yyyyMMdd } from '@/lib/utils';
+import { HHmmss, parseUrl as getWebsiteFromUrl, yyyyMMdd } from '@/lib/utils';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Timeline, TimelineConnector, TimelineContent, TimelineDescription, TimelineHeader, TimelineIcon, TimelineItem, TimelineTime, TimelineTitle } from '@/components/ui/timeline';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
+import { CategoryIcons } from '@/lib/constants';
 import InviteButton from '@/components/app/invite-button';
 import { Link } from '@/components/ui/typography';
 import Markdown from '@/components/render/markdown';
@@ -26,6 +28,8 @@ export default async function Page({ params }: Props) {
 
   const data = await response.json() as DiscordBotData;
 
+  const Icon = CategoryIcons[data.category] ?? Bot;
+
   return (
     <div className="mt-20 flex flex-col gap-8">
       <Image
@@ -43,7 +47,7 @@ export default async function Page({ params }: Props) {
           maskImage: 'linear-gradient(to bottom, hsl(0 0 100 / 75%) 0%, hsl(0 0 100 / 24%) 60%, transparent 90%)',
           filter: `url('#blur')`,
         }}
-        alt=""
+        alt="背景橫幅"
       />
       <div className="flex items-center justify-between py-4">
         <div className="flex items-center gap-6">
@@ -51,9 +55,12 @@ export default async function Page({ params }: Props) {
             <AvatarImage src={data.avatarURL} />
             <AvatarFallback>{data.title.slice(0, 2)}</AvatarFallback>
           </Avatar>
-          <div className="flex flex-col gap-1 drop-shadow">
+          <div className="flex flex-col gap-2 drop-shadow">
             <h2 className="text-2xl font-bold">{data.title}</h2>
-            <h3 className="text-muted-foreground">{data.category}</h3>
+            <h3 className="flex items-center gap-1 text-muted-foreground">
+              <Icon size={20} />
+              {data.category}
+            </h3>
           </div>
         </div>
         <div>
@@ -81,26 +88,33 @@ export default async function Page({ params }: Props) {
 
             <TabsContent value="announcement" asChild>
               <Card className="p-6">
-                <Timeline>
-                  {data.announcements.map((a) => (
-                    <TimelineItem className="ml-16" key={a.time}>
-                      <TimelineConnector />
-                      <TimelineHeader>
-                        <TimelineTime className="flex flex-col items-end gap-2">
-                          <div>{yyyyMMdd(a.time)}</div>
-                          <div>{HHmmss(a.time)}</div>
-                        </TimelineTime>
-                        <TimelineIcon />
-                        <TimelineTitle>{a.title}</TimelineTitle>
-                      </TimelineHeader>
-                      <TimelineContent>
-                        <TimelineDescription className="group/md">
-                          <Markdown>{a.content}</Markdown>
-                        </TimelineDescription>
-                      </TimelineContent>
-                    </TimelineItem>
-                  ))}
-                </Timeline>
+                { data.announcements.length
+                  ? (
+                      <Timeline>
+                        {data.announcements.map((a) => (
+                          <TimelineItem className="ml-16" key={a.time}>
+                            <TimelineConnector />
+                            <TimelineHeader>
+                              <TimelineTime className={`
+                                flex flex-col items-end gap-2
+                              `}
+                              >
+                                <div>{yyyyMMdd(a.time)}</div>
+                                <div>{HHmmss(a.time)}</div>
+                              </TimelineTime>
+                              <TimelineIcon />
+                              <TimelineTitle>{a.title}</TimelineTitle>
+                            </TimelineHeader>
+                            <TimelineContent>
+                              <TimelineDescription className="group/md">
+                                <Markdown>{a.content}</Markdown>
+                              </TimelineDescription>
+                            </TimelineContent>
+                          </TimelineItem>
+                        ))}
+                      </Timeline>
+                    )
+                  : <div className="text-muted-foreground">目前尚無公告</div>}
               </Card>
             </TabsContent>
 
@@ -131,9 +145,22 @@ export default async function Page({ params }: Props) {
           </div>
 
           <div className="flex flex-col gap-4">
-            <div className="text-xl font-bold">連結</div>
-            <div className="flex flex-wrap items-center gap-2">
-              {data.link.map((val) => (<Link href={val}>{val}</Link>))}
+            <div className="text-xl font-bold">外部連結</div>
+            <div className="flex flex-col gap-4">
+              {data.link.map((url) => {
+                const website = getWebsiteFromUrl(url);
+                return (
+                  <Link
+                    href={url}
+                    className={`
+                      flex items-center gap-2 text-muted-foreground no-underline
+                    `}
+                  >
+                    <website.icon />
+                    <span>{website.name}</span>
+                  </Link>
+                );
+              })}
             </div>
           </div>
 

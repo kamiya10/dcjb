@@ -3,9 +3,10 @@ import rehypeGithubAlert from 'rehype-github-alert';
 import remarkGfm from 'remark-gfm';
 import { twMerge } from 'tailwind-merge';
 
-import { BlockQuote, Code, Heading2, Heading3, Heading4, Link } from '../ui/typography';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../ui/table';
-import { Checkbox } from '../ui/checkbox';
+import { BlockQuote, Code, Heading1, Heading2, Heading3, Heading4, Link } from '@/components/ui/typography';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Separator } from '@/components/ui/separator';
 
 import type React from 'react';
 
@@ -15,7 +16,10 @@ export default function Markdown({ children }: React.ComponentPropsWithoutRef<ty
       remarkPlugins={[remarkGfm]}
       rehypePlugins={[rehypeGithubAlert]}
       components={{
-        h1: () => '',
+        h1({ node, ...props }: React.HTMLAttributes<HTMLHeadingElement> & { node: never }) {
+          void node;
+          return <Heading1 {...props} />;
+        },
         h2({ node, ...props }: React.HTMLAttributes<HTMLHeadingElement> & { node: never }) {
           void node;
           return <Heading2 {...props} />;
@@ -27,6 +31,10 @@ export default function Markdown({ children }: React.ComponentPropsWithoutRef<ty
         h4({ node, ...props }: React.HTMLAttributes<HTMLHeadingElement> & { node: never }) {
           void node;
           return <Heading4 {...props} />;
+        },
+        hr({ node, className, ...props }: React.HTMLAttributes<HTMLHRElement> & { node: never }) {
+          void node;
+          return <Separator {...props} className={twMerge('my-2', className)} />;
         },
         div({ className, node, ...props }: React.HTMLAttributes<HTMLDivElement> & { node: never }) {
           const isAlert = className?.includes('markdown-alert');
@@ -189,18 +197,20 @@ export default function Markdown({ children }: React.ComponentPropsWithoutRef<ty
           void node;
           return <Link {...props} />;
         },
+        li({ className, node, ...props }: React.InputHTMLAttributes<HTMLLIElement> & { node: never }) {
+          void node;
+          return <li {...props} className={className} />;
+        },
         input({ className, node, ...props }: React.InputHTMLAttributes<HTMLInputElement> & { node: never }) {
           void node;
           return (
             props.type == 'checkbox'
               ? (
-                  <div className="inline-block align-middle mr-1">
-                    <Checkbox
-                      checked={props.checked}
-                      className="!cursor-default"
-                      disabled
-                    />
-                  </div>
+                  <Checkbox
+                    checked={props.checked}
+                    className="!cursor-default align-middle mr-2 disabled:opacity-100"
+                    disabled
+                  />
                 )
               : <input {...props} className={className} />
           );

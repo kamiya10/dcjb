@@ -1,7 +1,7 @@
 import { existsSync, readFileSync } from 'fs';
 import { resolve } from 'path';
 
-import type { DiscordBotData } from '../../_lib/apitypes';
+import type { DiscordBotData } from '@/app/api/_lib/apitypes';
 
 type Params = Readonly<{
   params: Promise<{ id: string }>;
