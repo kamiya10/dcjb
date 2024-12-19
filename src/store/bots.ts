@@ -13,7 +13,7 @@ export const useBotStore = create(
     (set) => ({
       bots: [],
       async fetch() {
-        const response = await fetch('/api/bot');
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/bot`);
 
         if (!response.ok) {
           throw new Error(`Request failed with status ${response.status}: ${await response.text()}`);
