@@ -1,15 +1,16 @@
 {
-    "title": "YEE式機器龍",
-    "id": "584213384409382953",
-    "category": "音樂",
-    "avatarURL": "https://cdn.discordapp.com/avatars/584213384409382953/4438fe5d2f91ddd873407e759ff23116.png?size=2048&quality=lossless",
-    "bannerURL": "https://cdn.discordapp.com/banners/584213384409382953/74396f372494b63073bfae3c5485d8ed.png?size=1024",
-    "inviteURL": "https://yeecord.com/invite",
-    "owner": {
-        "name": "kanewang",
-        "avatarURL": "https://cdn.discordapp.com/avatars/498505540612259840/19fb12a602d150ac9c7355e4f84475d5.png"
-    },
-    "tags": ["音樂", "RPG"],
-    "shortDescription": "一隻全中文的機器人，並結合了音樂系統、RPG、動態語音頻道、跨群聊天等功能，讓 Discord 不再只是聊天軟體",
-    "description": "[YEE式機器龍](https://yeecord.com/) 是從2019年就開始提供服務的中文機器人，並提供 [YouTube / Spotify](https://yeecord.com/blog/how-to-invite-bot/) 播放、[RPG系統](https://yeecord.com/docs/rpg/)、[動態語音頻道](https://yeecord.com/docs/dvc/) 等方便的功能，讓Discord不再只是聊天軟體！\n\n### [官方支援群](https://discord.gg/yeecord)\n\n![](https://card.yeecord.com/)"
+  "title": "YEE式機器龍",
+  "id": "584213384409382953",
+  "category": "音樂",
+  "avatarURL": "https://cdn.discordapp.com/avatars/584213384409382953/4438fe5d2f91ddd873407e759ff23116.png?size=2048&quality=lossless",
+  "bannerURL": "https://cdn.discordapp.com/banners/584213384409382953/74396f372494b63073bfae3c5485d8ed.png?size=1024",
+  "inviteURL": "https://yeecord.com/invite",
+  "owner": {
+    "name": "kanewang",
+    "avatarURL": "https://cdn.discordapp.com/avatars/498505540612259840/19fb12a602d150ac9c7355e4f84475d5.png"
+  },
+  "tags": ["音樂", "RPG"],
+  "shortDescription": "一隻全中文的機器人，並結合了音樂系統、RPG、動態語音頻道、跨群聊天等功能，讓 Discord 不再只是聊天軟體",
+  "description": "[YEE式機器龍](https://yeecord.com/) 是從2019年就開始提供服務的中文機器人，並提供 [YouTube / Spotify](https://yeecord.com/blog/how-to-invite-bot/) 播放、[RPG系統](https://yeecord.com/docs/rpg/)、[動態語音頻道](https://yeecord.com/docs/dvc/) 等方便的功能，讓Discord不再只是聊天軟體！\n\n### [官方支援群](https://discord.gg/yeecord)\n\n![](https://card.yeecord.com/)",
+  "link": []
 }

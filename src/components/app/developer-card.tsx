@@ -14,6 +14,7 @@ type Props = Readonly<{
     label: string;
     url: string;
   }[];
+  job: string;
 }>;
 
 const Icons = {
@@ -23,7 +24,7 @@ const Icons = {
   部落格: <Rss size={24} />,
 } as Record<string, React.ReactNode>;
 
-export function DeveloperCard({ name, nickname, avatar, department, links }: Props) {
+export function DeveloperCard({ name, nickname, avatar, department, links, job }: Props) {
   return (
     <Card className="relative mt-16">
       <CardHeader className="flex flex-col items-center">
@@ -40,7 +41,7 @@ export function DeveloperCard({ name, nickname, avatar, department, links }: Pro
         <CardDescription className="flex flex-col items-center">
           <div>{nickname}</div>
           <div>{department}</div>
-
+          <div>{job}</div>
         </CardDescription>
       </CardHeader>
       <CardFooter className="flex flex-col gap-4">
