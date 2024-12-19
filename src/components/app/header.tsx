@@ -11,15 +11,19 @@ import { Skeleton } from '@/components/ui/skeleton';
 
 function Branding() {
   return (
-    <Link href="/" className="relative">
+    <Link href="/" className="group relative">
       <h1 className="text-xl font-bold">狄西機霸</h1>
       <Image
         src={ChristmasHat}
         alt="聖誕帽"
         height={32}
         width={32}
-        className="absolute -right-4 -top-3 rotate-12"
         draggable={false}
+        className={`
+          absolute -right-4 -top-3 origin-[75%_75%] rotate-12
+          transition-[transform_top]
+          group-hover:-top-2 group-hover:rotate-[24deg]
+        `}
       />
     </Link>
   );

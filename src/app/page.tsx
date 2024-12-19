@@ -11,7 +11,7 @@ import { RadioTile } from '@/components/ui/radio-tile';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useBotStore } from '@/store/bots';
 
-import type { MouseEventHandler } from 'react';
+import type { MouseEvent } from 'react';
 
 const Icons = {
   工具: <Wrench size={18} />,
@@ -21,6 +21,7 @@ const Icons = {
 
 export default function Home() {
   const botStore = useBotStore();
+  const [keyword, setKeyword] = useState('');
   const [category, setCategory] = useState('');
   const [error, setError] = useState<Error | null>(null);
   const [isLoading, setLoading] = useState(true);
@@ -41,7 +42,7 @@ export default function Home() {
     })();
   }, []);
 
-  const selectCategory: MouseEventHandler<HTMLButtonElement> = (ev) => {
+  const selectCategory = (ev: MouseEvent<HTMLButtonElement>) => {
     if (category == ev.currentTarget.value) {
       setCategory('');
     }
@@ -50,7 +51,17 @@ export default function Home() {
     }
   };
 
-  const filtered = botStore.bots.filter((v) => !category || v.category == category);
+  const inputKeyword = (ev: MouseEvent<HTMLInputElement>) => {
+    setKeyword(ev.currentTarget.value);
+  };
+
+  const filtered = botStore.bots
+    .filter((v) => !category || v.category == category)
+    .filter((v) => {
+      const kw = keyword.toLowerCase();
+      return v.title.toLowerCase().includes(kw)
+        || v.id.toLowerCase().includes(kw);
+    });
 
   return (
     <div className="flex flex-col items-center">
@@ -62,7 +73,7 @@ export default function Home() {
         <div className="flex flex-col gap-8 pt-4">
           <div className="flex flex-col gap-2">
             <div>搜尋</div>
-            <Input placeholder="關鍵字" />
+            <Input value={keyword} onInput={inputKeyword} placeholder="關鍵字" />
           </div>
           <RadioGroup className="flex flex-col gap-2" value={category}>
             <div>類別</div>
@@ -93,7 +104,6 @@ export default function Home() {
                   md:grid md:grid-cols-[repeat(auto-fill,_minmax(320px,_1fr))]
                 `}
                 >
-
                   {Array.from(Array(6).keys()).map((i) => (
                     <Skeleton className="h-48 w-full rounded-xl" key={`loading-${i}`} />
                   ))}
