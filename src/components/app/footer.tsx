@@ -21,7 +21,7 @@ const ThemeNames = {
 } as Record<string, string>;
 
 export default function AppFooter() {
-  const { setTheme, theme, themes } = useTheme();
+  const { setTheme, theme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
