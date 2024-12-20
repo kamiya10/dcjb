@@ -1,3 +1,4 @@
+import React from 'react';
 import { twMerge } from 'tailwind-merge';
 
 import { BlockQuote, Code, Heading1, Heading2, Heading3, Heading4, Link } from '@/components/ui/typography';
@@ -8,7 +9,14 @@ import type { MDXComponents } from 'mdx/types';
 
 export function useMDXComponents(components: MDXComponents = {}): MDXComponents {
   return {
-    h1: Heading1,
+    h1({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) {
+      return (
+        <Heading1
+          {...props}
+          className={twMerge('mb-8 mt-16', className)}
+        />
+      );
+    },
     h2: Heading2,
     h3: Heading3,
     h4: Heading4,

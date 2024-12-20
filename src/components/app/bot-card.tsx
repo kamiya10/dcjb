@@ -27,7 +27,7 @@ export default function BotCard({ bot, premium = false }: Props) {
           dark:data-[premium]:hover:bg-emerald-600/[.20]
           data-[premium]:border-emerald-600 data-[premium]:bg-emerald-600/[.16]
           data-[premium]:hover:border-emerald-600
-          data-[premium]:hover:bg-emerald-600/[.08]
+          data-[premium]:hover:bg-emerald-600/[.20]
           hover:border-primary hover:bg-primary/[.08]
         `}
         data-premium={premium ? '' : null}

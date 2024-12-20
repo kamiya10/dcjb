@@ -163,6 +163,7 @@ export default async function Page({ params }: Props) {
 
                 return (
                   <Link
+                    key={website.name}
                     href={url}
                     className={`
                       flex items-center gap-3 text-muted-foreground no-underline
