@@ -18,7 +18,7 @@
   ],
   "announcements": [
     {
-      "time": 1732377600,
+      "time": 1732377600000,
       "title": "更多來源",
       "content":"現在支援更多播放來源了！\n\n- Soundcloud\n- Spotify\n- Apple Music"
     }
