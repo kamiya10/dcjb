@@ -63,7 +63,7 @@ const developers = [{
       url: 'https://discord.com/users/763690576209903627',
     },
   ],
-  job: '馬戲團小丑主演',
+  job: '外送員',
 },
 {
   name: '温胤呈',
