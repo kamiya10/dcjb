@@ -49,9 +49,21 @@ export default async function Page({ params }: Props) {
         }}
         alt="背景橫幅"
       />
-      <div className="flex items-center justify-between py-4">
-        <div className="flex items-center gap-6">
-          <Avatar className="size-24 drop-shadow">
+      <div className={`
+        flex flex-col justify-between gap-8 py-4
+        md:flex-row md:items-center
+      `}
+      >
+        <div className={`
+          flex items-center gap-4
+          md:gap-6
+        `}
+        >
+          <Avatar className={`
+            size-20 drop-shadow
+            md:size-24
+          `}
+          >
             <AvatarImage src={data.avatarURL} />
             <AvatarFallback>{data.title.slice(0, 2)}</AvatarFallback>
           </Avatar>
@@ -74,9 +86,7 @@ export default async function Page({ params }: Props) {
             </h3>
           </div>
         </div>
-        <div>
-          <InviteButton url={data.inviteURL} />
-        </div>
+        <InviteButton url={data.inviteURL} />
       </div>
       <div className={`
         flex flex-col gap-8
